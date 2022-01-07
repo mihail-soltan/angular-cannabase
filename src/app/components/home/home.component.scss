@@ -87,6 +87,23 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-        }        
+        }
+        
+        &-seedCompanies {
+            display: flex;
+            align-items: center;
+        }
+
+        &-seedCompany {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        &-seedCompany-title {
+            color: #fff;
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
 
     }
