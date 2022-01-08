@@ -1,29 +1,33 @@
 <div class="filters">
   <mat-form-field>
     <mat-label>Sort</mat-label>
-    <mat-select panelClass="sort-select" [(ngModel)]="sort">
+    <mat-select panelClass="sort-select" [(ngModel)]="sort" (selectionChange)="searchStrains(sort)">
       <mat-option value="name">Name</mat-option>
-      <mat-option value="created">Created</mat-option>
-      <mat-option value="updated">Updated</mat-option>
+      <mat-option value="createdAt">Created</mat-option>
+      <mat-option value="updatedAt">Updated</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 
 <div class="strains">
-  <div class="strain">
+  <ng-container *ngFor="let strain of strains">
+  <div class="strain" (click)="openStrainDetails(strain)">
     <div class="strain-thumb-container">
       <img
-        src="https://www.cannabisreports.com/images/strains/3/full_3a6b6fab2feea392859b19689798caafe27f3a73.jpg"
+        *ngIf="strain.image"
+        src="{{strain.image}}"
         alt="plant"
         class="strain-thumbnail"
       />
+      <p *ngIf="strain.image">No image</p>
     </div>
     <div class="strain-description">
-      <p class="strain-name">Name</p>
+      <p class="strain-name">{{ strain.name }}</p>
       <div class="strain-seedCompanies">
         <img src="assets/weed.jpg" alt="slug" class="strain-seedCompany" />
-        <h4 class="strain-seedCompany-title">Purple Caper Seeds</h4>
+        <h4 class="strain-seedCompany-title">{{strain.seedCompany.name}}</h4>
       </div>
     </div>
   </div>
+</ng-container>
 </div>
